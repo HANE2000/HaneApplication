@@ -104,29 +104,31 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         //upload_img_1.setImageURI()
     }
 
+    /** 画像選択1 */
     private fun onClickUploadImg1() {
         selectImageFrom = R.id.upload_img_1
         selectPhoto()
     }
-
+    /** 画像選択2 */
     private fun onClickUploadImg2() {
         selectImageFrom = R.id.upload_img_2
         selectPhoto()
         //selectImageFrom = 0
     }
-
+    /** 画像選択3 */
     private fun onClickUploadImg3() {
         selectImageFrom = R.id.upload_img_3
         selectPhoto()
         //selectImageFrom = 0
     }
-
+    /** 画像選択4 */
     private fun onClickUploadImg4() {
         selectImageFrom = R.id.upload_img_4
         selectPhoto()
         //selectImageFrom = 0
     }
 
+    /** 「Tweet」ボタン押下イベント */
     private fun onClickTweetButton() {
         try {
             launch {
@@ -189,6 +191,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         }
     }
 
+    /** 画像ファイルを選択するために外部アプリを開く */
     private fun selectPhoto() {
         val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)

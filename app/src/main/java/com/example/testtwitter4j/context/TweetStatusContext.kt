@@ -18,6 +18,7 @@ class TweetStatusContext {
         var image3Uri:Uri = Uri.parse("")
         var image4Uri:Uri = Uri.parse("")
 
+        /** 添付画像のBitmap */
         var image1Bitmap:Bitmap? = null
         var image2Bitmap:Bitmap? = null
         var image3Bitmap:Bitmap? = null
@@ -25,6 +26,7 @@ class TweetStatusContext {
 
     }
 
+    /** 添付画像Bitmap1-4を全て初期化する（Tweet完了後にまた残存しているケースを防ぐため） */
     fun initializeBitmaps () {
         image1Bitmap = null
         image2Bitmap = null
