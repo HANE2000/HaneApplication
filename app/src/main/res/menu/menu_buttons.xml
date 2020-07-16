@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item01"
+        android:title="replace to MonthItemFragment()" />
+    <item
+        android:id="@+id/menu_item02"
+        android:title="dummy2()" />
+    <item
+        android:id="@+id/menu_item03"
+        android:title="dummy3()" />
+</menu>

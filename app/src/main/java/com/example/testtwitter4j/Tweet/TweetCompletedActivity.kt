@@ -1,9 +1,10 @@
-package com.example.testtwitter4j.activity
+package com.example.testtwitter4j.Tweet
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.testtwitter4j.R
 import com.example.testtwitter4j.Utility.ErrorUtility
+import com.example.testtwitter4j.activity.MainActivity
 import com.example.testtwitter4j.context.AppContext
 import com.example.testtwitter4j.context.TweetStatusContext
 import kotlinx.android.synthetic.main.activity_tweet_completed.*
