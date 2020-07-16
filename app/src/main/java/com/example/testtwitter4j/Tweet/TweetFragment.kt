@@ -18,6 +18,7 @@ import com.example.testtwitter4j.activity.MainActivity
 import com.example.testtwitter4j.context.AppContext
 import com.example.testtwitter4j.context.TweetStatusContext
 import kotlinx.android.synthetic.main.fragment_tweet.*
+import kotlinx.android.synthetic.main.fragment_tweet.view.*
 import kotlinx.coroutines.*
 import twitter4j.StatusUpdate
 import twitter4j.Twitter
@@ -59,31 +60,6 @@ class TweetFragment : Fragment() , CoroutineScope {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-
-        // 画像1-4のBitmapを初期化
-        TweetStatusContext().initializeBitmaps()
-
-        // 画像選択
-        // 2020/07/16 ここで、以下のエラーで死ぬ
-        // java.lang.NullPointerException: Attempt to invoke virtual method 'void android.widget.ImageView.setOnClickListener(android.view.View$OnClickListener)' on a null object reference
-        upload_img_1.setOnClickListener {
-            onClickUploadImg1()
-        }
-        upload_img_2.setOnClickListener {
-            onClickUploadImg2()
-        }
-        upload_img_3.setOnClickListener {
-            onClickUploadImg3()
-        }
-        upload_img_4.setOnClickListener {
-            onClickUploadImg4()
-        }
-
-
-        tweet_button.setOnClickListener { //ID:buttonのボタンをクリックした際の処理
-            onClickTweetButton()
-        }
     }
 
     override fun onCreateView(
@@ -91,7 +67,32 @@ class TweetFragment : Fragment() , CoroutineScope {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tweet, container, false)
+        // fragmentの場合、onCreateView内で下記のようにviewを設定し、view.[id].setOnClickListener{}の形でクリックハンドラを書く
+        val view = inflater.inflate(R.layout.fragment_tweet, container, false)
+
+
+        // 画像1-4のBitmapを初期化
+        TweetStatusContext().initializeBitmaps()
+
+        // 画像選択
+        view.upload_img_1.setOnClickListener {
+            onClickUploadImg1()
+        }
+        view.upload_img_2.setOnClickListener {
+            onClickUploadImg2()
+        }
+        view.upload_img_3.setOnClickListener {
+            onClickUploadImg3()
+        }
+        view.upload_img_4.setOnClickListener {
+            onClickUploadImg4()
+        }
+
+
+        view.tweet_button.setOnClickListener { //ID:buttonのボタンをクリックした際の処理
+            onClickTweetButton()
+        }
+        return view
     }
 
 

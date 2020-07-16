@@ -81,6 +81,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     // LinearLayoutのコンテナをfragment指定 + replaceする
     // 引数は 「new Fragmentを継承しているクラスのインスタンス()」
     fun replaceFragment(fragment: Fragment) {
+        // 2020/07/16 以下で落ちる
+        // kotlin.UninitializedPropertyAccessException: lateinit property fragmentManager has not been initialized
         fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(
             R.id.fragment_container,
