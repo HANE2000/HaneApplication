@@ -1,6 +1,7 @@
-package com.example.testtwitter4j.Tweet
+package com.example.testtwitter4j.tweet
 
 import android.content.ContentResolver
+import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -11,12 +12,10 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-
 import com.example.testtwitter4j.R
-import com.example.testtwitter4j.Utility.ImageUtility
-import com.example.testtwitter4j.activity.MainActivity
-import com.example.testtwitter4j.context.AppContext
+import com.example.testtwitter4j.utility.ImageUtility
 import com.example.testtwitter4j.context.TweetStatusContext
+import com.example.testtwitter4j.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_tweet.*
 import kotlinx.android.synthetic.main.fragment_tweet.view.*
 import kotlinx.coroutines.*
@@ -134,8 +133,12 @@ class TweetFragment : Fragment() , CoroutineScope {
         }
     }
 
-    private fun updateView() {
-        //upload_img_1.setImageURI()
+    override fun onAttach(context: Context) {
+        super.onAttach(context!!)
+    }
+
+    override fun onDetach() {
+        super.onDetach()
     }
 
     /** 画像選択1 */
@@ -223,8 +226,12 @@ class TweetFragment : Fragment() , CoroutineScope {
                 }.await() //.await()で通信処理が終わるまで待機
 
                 // message_text.text = "Tweet completed."
-                // AppContext.getInstance().startActivity(MainActivity, TweetCompletedActivity::class.java)
-                MainActivity().replaceFragment(TweetCompletedFragment())
+
+                // 2020/07/21 解決　↓↓
+                // 以下のように、親Activityを取得して そこからメソッド呼ばないと、
+                // IllegalStateException: Activity has been destroyed で落ちる（元のActivityの実体が不明なため）
+                val mainActivity = activity as MainActivity
+                mainActivity.replaceFragment(TweetCompletedFragment())
             }
         } catch (e: Exception) {
 

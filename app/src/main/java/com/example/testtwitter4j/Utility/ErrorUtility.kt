@@ -1,4 +1,4 @@
-package com.example.testtwitter4j.Utility
+package com.example.testtwitter4j.utility
 
 import android.app.AlertDialog
 import android.content.Context
@@ -16,7 +16,7 @@ class ErrorUtility {
 
             AlertDialog.Builder(context)
                 .setTitle("予期せぬエラー")
-                .setMessage("予期せぬエラーが発生しました。システム管理者に報告ください。\n内容: ${e}\n詳細: $stack")
+                .setMessage("予期せぬエラーが発生しました。 @HANEKW_ に報告ください。\n内容: ${e}\n詳細: $stack")
                 .setPositiveButton("OK", null)
                 .show()
         }

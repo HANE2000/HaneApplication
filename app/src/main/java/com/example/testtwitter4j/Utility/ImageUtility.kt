@@ -1,6 +1,5 @@
-package com.example.testtwitter4j.Utility
+package com.example.testtwitter4j.utility
 
-import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
 import android.graphics.Bitmap

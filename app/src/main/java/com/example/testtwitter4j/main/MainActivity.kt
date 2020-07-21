@@ -1,37 +1,28 @@
-package com.example.testtwitter4j.activity
+package com.example.testtwitter4j.main
 
-import android.content.Intent
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.testtwitter4j.R
-import com.example.testtwitter4j.Tweet.TweetCompletedActivity
-import com.example.testtwitter4j.Tweet.TweetFragment
-import com.example.testtwitter4j.Utility.ErrorUtility
-import com.example.testtwitter4j.Utility.ImageUtility
-import com.example.testtwitter4j.context.AppContext
-import com.example.testtwitter4j.context.TweetStatusContext
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.testtwitter4j.tweet.TweetCompletedFragment
+import com.example.testtwitter4j.tweet.TweetFragment
+import com.example.testtwitter4j.utility.ErrorUtility
 import kotlinx.coroutines.*
-import twitter4j.StatusUpdate
 import twitter4j.Twitter
 import twitter4j.TwitterFactory
-import twitter4j.UploadedMedia
 import kotlin.coroutines.CoroutineContext
 
 
 //プロパティファイルを使う場合
 class MainActivity : AppCompatActivity(), CoroutineScope {
 
-    private lateinit var fragmentManager: FragmentManager
-    private lateinit var fragmentTransaction: FragmentTransaction
+    var fragmentManager: FragmentManager = supportFragmentManager
+    var fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
     private val twitter: Twitter = TwitterFactory().instance
 
     //Coroutinesを扱うための設定（詳細は後述）
@@ -70,8 +61,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 replaceFragment(TweetFragment())
                 true
             }
-            R.id.menu_item02 ->                 // 処理
+            R.id.menu_item02 -> {
+                // 処理
+                replaceFragment(TweetCompletedFragment())
                 true
+            }
             R.id.menu_item03 ->                 // 処理
                 true
             else -> super.onOptionsItemSelected(item)
