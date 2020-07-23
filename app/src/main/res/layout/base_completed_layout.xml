@@ -2,7 +2,9 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+
+    android:background="@color/background">
 
     <TextView
         android:id="@+id/theme_text"
@@ -10,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:textSize="32dp"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textStyle="bold"
+        android:textColor="@color/labelTextColor"
         android:textAlignment="center"
         android:text="主題（○○完了 とか）"
         />
@@ -22,6 +25,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:text="詳細をここに書く。詳細をここに書く。詳細をここに書く。詳細をここに書く。詳細をここに書く。詳細をここに書く。詳細をここに書く。詳細をここに書く。詳細をここに書く。詳細をここに書く。詳細をここに書く。詳細をここに書く。詳細をここに書く。詳細をここに書く。詳細をここに書く。"
+        android:textColor="@color/textColor"
         />
 
     <Button
@@ -30,7 +34,9 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
+        android:background="@drawable/button_background"
         android:text="「TOPへ」とか"
+        android:textColor="@color/buttonTextColor"
         />
 
     ></LinearLayout>

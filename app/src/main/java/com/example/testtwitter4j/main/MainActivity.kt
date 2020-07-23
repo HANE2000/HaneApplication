@@ -9,9 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.testtwitter4j.R
-import com.example.testtwitter4j.tweet.TweetCompletedFragment
 import com.example.testtwitter4j.tweet.TweetFragment
 import com.example.testtwitter4j.utility.ErrorUtility
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.footer_layout.view.*
 import kotlinx.coroutines.*
 import twitter4j.Twitter
 import twitter4j.TwitterFactory
@@ -38,6 +39,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             fragmentManager = supportFragmentManager
             fragmentTransaction = fragmentManager.beginTransaction()
 
+            footer.button_1.setOnClickListener {
+                replaceFragment(TweetFragment())
+            }
+
+
         } catch (e:Exception) {
             ErrorUtility.reportException(this, e)
         }
@@ -55,19 +61,19 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         return when (item.itemId) {
             R.id.menu_item01 -> {
                 // 処理
-                Toast.makeText(this, "Function.replaceFragment()", Toast.LENGTH_SHORT).show()
-
-                // 試作メソッド
-                replaceFragment(TweetFragment())
+                Toast.makeText(this, "未実装1", Toast.LENGTH_SHORT).show()
                 true
             }
             R.id.menu_item02 -> {
                 // 処理
-                replaceFragment(TweetCompletedFragment())
+                Toast.makeText(this, "未実装2", Toast.LENGTH_SHORT).show()
                 true
             }
-            R.id.menu_item03 ->                 // 処理
+            R.id.menu_item03 -> {
+                // 処理
+                Toast.makeText(this, "未実装3", Toast.LENGTH_SHORT).show()
                 true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

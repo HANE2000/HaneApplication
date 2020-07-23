@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tweet.TweetCompletedFragment">
+    tools:context=".tweet.TweetCompletedFragment"
+
+    android:background="@color/background">
 
     <include
         android:id="@+id/base_completed_layout"

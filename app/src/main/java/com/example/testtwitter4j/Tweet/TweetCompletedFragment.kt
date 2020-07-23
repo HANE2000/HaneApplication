@@ -46,7 +46,8 @@ class TweetCompletedFragment : Fragment() {
     ): View? {
 
         try {
-            super.onCreate(savedInstanceState)
+            //super.onCreate(savedInstanceState)
+
             // Inflate the layout for this fragment
             // fragmentの場合、onCreateView内で下記のようにviewを設定し、view.[id].setOnClickListener{}の形でクリックハンドラを書く
             val view = inflater.inflate(R.layout.fragment_tweet_completed, container, false)
@@ -67,6 +68,10 @@ class TweetCompletedFragment : Fragment() {
                 //AppContext.getInstance().startActivity(this, MainActivity::class.java)
                 (activity as MainActivity).replaceFragment(TweetFragment())
             }
+
+            // 2020/07/23
+            // setText()とかsetOn○○Lister()をしたViewをreturnしないと、それらが画面側に適用されないのがわかった
+            return view
         } catch (e: Exception) {
             //ErrorUtility.reportException(this, e)
             ErrorUtility.reportException(activity as MainActivity, e)

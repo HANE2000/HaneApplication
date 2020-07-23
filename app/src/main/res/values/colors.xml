@@ -3,4 +3,37 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+
+    <!-- GREEN -->
+    <color name="green_100_100">#00FF00</color>
+    
+    <!-- DARK GREEN -->
+    <color name="green_100_050">#007F00</color>
+    <color name="green_100_025">#003F00</color>
+
+    <!-- RIGHT GREEN -->
+    <color name="green_050_100">#7FFF7F</color>
+    <color name="green_025_100">#BFFFBF</color>
+
+    <!-- CUSTOM GREEN -->
+    <color name="green_075_075">#2FBF2F</color>
+    <color name="green_050_050">#3F7F3F</color>
+    <color name="green_025_025">#2F3F2F</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+
+
+    <color name="background">#2F3F2F</color>
+    <color name="footerBackground">#003F00</color>
+
+    <color name="editTextBackground">#007F00</color>
+
+    <color name="textColor">#BFFFBF</color>
+    <color name="hintTextColor">#2FBF2F</color>
+    <color name="buttonTextColor">#FFFFFF</color>
+    <color name="labelTextColor">#FFFFFF</color>
+
 </resources>
