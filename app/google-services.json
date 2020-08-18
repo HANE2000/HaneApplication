@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1030544156633",
+    "firebase_url": "https://testtwitter4j-2400f.firebaseio.com",
+    "project_id": "testtwitter4j-2400f",
+    "storage_bucket": "testtwitter4j-2400f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030544156633:android:fbc7fef3f83db319c35bc8",
+        "android_client_info": {
+          "package_name": "com.example.testtwitter4j"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030544156633-utli5bpr6rs19jha0etms4ihpj3cc18v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.testtwitter4j",
+            "certificate_hash": "69e443a4f7c7f69598cc33ec5ae061e1e5af50c7"
+          }
+        },
+        {
+          "client_id": "1030544156633-m8gqmsmnqleu8aarcs6fuaicm4ohcddj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAylBtm9cw3iMu76BCv4tiZrV6HNuONjl8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030544156633-m8gqmsmnqleu8aarcs6fuaicm4ohcddj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

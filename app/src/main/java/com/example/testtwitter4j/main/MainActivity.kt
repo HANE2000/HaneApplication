@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.testtwitter4j.R
 import com.example.testtwitter4j.tweet.TweetFragment
 import com.example.testtwitter4j.utility.ErrorUtility
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.twitter.sdk.android.core.TwitterSession
 import com.twitter.sdk.android.core.Callback;
@@ -55,7 +56,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             }
 
             // Firebaseの初期化
-            //mAuth = FirebaseAuth.getInstance()
+            FirebaseApp.initializeApp(this)
+            mAuth = FirebaseAuth.getInstance()
             /**  */
             login_button.callback = object : Callback<TwitterSession>() {
                 override fun success(result: Result<TwitterSession>?) {

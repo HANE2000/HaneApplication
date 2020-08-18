@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -42,15 +43,14 @@ dependencies {
     /** 以下の3つ書き加えてGradleSyncするだけでTwitter4Jの導入は終わりらしい */
     //省略
     implementation 'org.twitter4j:twitter4j-core:4.0.7'
-    implementation"org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2"
-    implementation"org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2"
     //省略
 
     /** firebase追加 */
-    implementation 'com.google.firebase:firebase-auth:15.1.0'
+    implementation 'com.google.firebase:firebase-auth:16.0.3'
 
     /** TwitterSDK追加 */
     implementation 'com.twitter.sdk.android:twitter:3.1.1'
     implementation 'com.twitter.sdk.android:twitter-mopub:3.1.1'
 }
-
