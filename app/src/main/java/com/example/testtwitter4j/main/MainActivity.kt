@@ -12,7 +12,9 @@ import com.example.testtwitter4j.R
 import com.example.testtwitter4j.tweet.TweetFragment
 import com.example.testtwitter4j.utility.ErrorUtility
 import com.google.firebase.FirebaseApp
-import com.google.firebase.auth.FirebaseAuth
+//import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.twitter.sdk.android.core.TwitterSession
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
@@ -36,7 +38,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     var fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
     private val twitter: Twitter = TwitterFactory().instance
 
-    private lateinit var mAuth: FirebaseAuth
+    //private lateinit var mAuth: FirebaseAuth
 
     //Coroutinesを扱うための設定（詳細は後述）
     private val job = Job()
@@ -57,7 +59,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
             // Firebaseの初期化
             FirebaseApp.initializeApp(this)
-            mAuth = FirebaseAuth.getInstance()
+            //mAuth = FirebaseAuth.getInstance()
             /**  */
             login_button.callback = object : Callback<TwitterSession>() {
                 override fun success(result: Result<TwitterSession>?) {
@@ -99,7 +101,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             }
             R.id.menu_item02 -> {
                 // 処理
-                Toast.makeText(this, "未実装2", Toast.LENGTH_SHORT).show()
+                // Write a message to the database
+                val database = Firebase.database
+                val myRef = database.getReference("message")
+                myRef.setValue("Hello, World!")
+                Toast.makeText(this, "Firebase.database.getReference(message)", Toast.LENGTH_SHORT).show()
                 true
             }
             R.id.menu_item03 -> {

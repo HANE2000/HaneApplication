@@ -48,7 +48,13 @@ dependencies {
     //省略
 
     /** firebase追加 */
-    implementation 'com.google.firebase:firebase-auth:16.0.3'
+    // ↓これが、firebase-databaseとバージョン競合してたのが原因でビルドエラーしてたっぽい
+    //implementation 'com.google.firebase:firebase-auth:16.0.3'
+    /** アプリに Realtime Database SDK を追加する
+     * https://firebase.google.com/docs/database/android/start?hl=ja#add-sdk
+     * */
+    implementation 'com.google.firebase:firebase-database-ktx:19.3.1'
+
 
     /** TwitterSDK追加 */
     implementation 'com.twitter.sdk.android:twitter:3.1.1'
