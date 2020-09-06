@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:elevation="24dp"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollModel"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/beatmania"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/beatmania_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:focusable="true"
+
+                    android:focusableInTouchMode="true"
+                    android:text="beatmania iidx"
+
+                    android:textColor="@color/textColor"
+                    android:textSize="24sp">
+
+                    <requestFocus />
+                </TextView>
+
+                <ImageView
+                    android:id="@+id/beat_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/beatmania_icon" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/stdButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/button_background"
+                    android:onClick="stdButton"
+                    android:text="スタンダード\n(120p)"
+                    android:textColor="@color/buttonTextColor"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/beat_std"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="left"
+                    android:text="× 0"
+                    android:textColor="@color/textColor" />
+
+                <Button
+                    android:id="@+id/pfreeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_toEndOf="@+id/center_view"
+                    android:background="@drawable/button_background"
+                    android:onClick="pfreeButton"
+                    android:text="Pフリー10分\n(204p)"
+                    android:textColor="@color/buttonTextColor"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/beat_pfree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/pfreeButton"
+                    android:layout_alignBottom="@+id/pfreeButton"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="15dp"
+                    android:gravity="center"
+                    android:text="× 0"
+                    android:textColor="@color/textColor" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/popnmusic_group"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/popn_label"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="pop\'n music"
+                    android:textColor="@color/textColor"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:id="@+id/popn_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    app:srcCompat="@drawable/popn_icon" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/popnButton100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/button_background"
+                    android:onClick="popn100Button"
+                    android:text="ノーマル\n(100P)"
+                    android:textColor="@color/buttonTextColor"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/popn100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="× 0"
+                    android:textColor="@color/textColor" />
+
+                <Button
+                    android:id="@+id/popnButton120"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_toEndOf="@+id/center_view"
+                    android:background="@drawable/button_background"
+                    android:onClick="popn120Button"
+                    android:text="ノーマル + α\n(120P)"
+                    android:textAllCaps="false"
+                    android:textColor="@color/buttonTextColor"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/popn120"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:gravity="center"
+                    android:text="× 0"
+                    android:textColor="@color/textColor" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/maimai_group"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/maimai_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="maimai"
+                    android:textColor="@color/textColor"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:id="@+id/maimai_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    app:srcCompat="@drawable/maimai_icon" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/maimaiButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/button_background"
+                android:gravity="center"
+                android:onClick="maimaiButton"
+                android:text="クレジット\n(100円)"
+                android:textColor="@color/buttonTextColor"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/maimai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:gravity="center"
+                android:text="× 0"
+                android:textColor="@color/textColor" />
+
+            <LinearLayout
+                android:id="@+id/chuni_group"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/chuni_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CHUNITHM"
+                    android:textColor="@color/textColor"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:id="@+id/chuni_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    app:srcCompat="@drawable/chuni_icon" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/chuniButton"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/button_background"
+                android:gravity="center"
+                android:onClick="chuniButton"
+                android:text="クレジット\n(100円)"
+                android:textColor="@color/buttonTextColor"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/chuni"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:gravity="center"
+                android:text="× 0"
+                android:textColor="@color/textColor" />
+
+
+            <LinearLayout
+                android:id="@+id/taiko_group"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/taiko_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="太鼓の達人"
+                    android:textColor="@color/textColor"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:id="@+id/taiko_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    app:srcCompat="@drawable/maimai_icon" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/taikoButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/button_background"
+                android:gravity="center"
+                android:onClick="taikoButton"
+                android:text="クレジット\n(100円)"
+                android:textColor="@color/buttonTextColor"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/taiko"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:gravity="center"
+                android:text="× 0"
+                android:textColor="@color/textColor" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/other_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="そのほかの出費"
+            android:textColor="@color/textColor"
+            android:textSize="36sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/categoryHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="何に出費した？（項目名16文字まで）"
+        android:textColor="@color/textColor" />
+
+    <EditText
+        android:id="@+id/editCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/editTextBackground"
+        android:ems="10"
+        android:inputType="text"
+        android:maxLength="16"
+        android:textColor="@color/textColor" />
+
+    <TextView
+        android:id="@+id/amountHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="その出費はいくら？（円）"
+        android:textColor="@color/textColor" />
+
+    <EditText
+        android:id="@+id/editAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/editTextBackground"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="8"
+        android:textColor="@color/textColor" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="17dp"
+            android:layout_toStartOf="@+id/resetButton"
+            android:background="@drawable/button_background"
+            android:text="もどる"
+            android:textColor="@color/buttonTextColor"
+
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/button_background"
+            android:elevation="0dp"
+            android:text="リセット"
+            android:textColor="@color/buttonTextColor"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/button_background"
+            android:text="追加"
+            android:textColor="@color/buttonTextColor"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</LinearLayout>

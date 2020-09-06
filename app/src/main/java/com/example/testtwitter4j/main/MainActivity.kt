@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.testtwitter4j.R
+import com.example.testtwitter4j.outlay.OutlayInputFragment
 import com.example.testtwitter4j.tweet.TweetFragment
 import com.example.testtwitter4j.utility.ErrorUtility
 import com.google.firebase.FirebaseApp
@@ -57,10 +58,15 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 replaceFragment(TweetFragment())
             }
 
+            footer.button_2.setOnClickListener {
+                replaceFragment(OutlayInputFragment())
+            }
+
             // Firebaseの初期化
             FirebaseApp.initializeApp(this)
             //mAuth = FirebaseAuth.getInstance()
-            /**  */
+            /** Twitterログインボタン */
+            /*
             login_button.callback = object : Callback<TwitterSession>() {
                 override fun success(result: Result<TwitterSession>?) {
                     Toast.makeText(this@MainActivity, "ログイン成功", Toast.LENGTH_SHORT).show()
@@ -77,6 +83,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                     Toast.makeText(this@MainActivity, "ログイン失敗", Toast.LENGTH_SHORT).show()
                 }
             }
+
+             */
 
 
         } catch (e:Exception) {

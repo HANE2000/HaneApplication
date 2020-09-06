@@ -8,6 +8,10 @@
 
     android:background="@color/background">
 
+    <include
+        android:id="@+id/header"
+        layout="@layout/header_layout" />
+
     <EditText
         android:id="@+id/tweet_edit"
         android:layout_width="match_parent"
