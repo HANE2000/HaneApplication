@@ -5,6 +5,6 @@ import java.util.*
 
 data class OutlayBean (
     var addedDate: Date = Date(),
-    var title: String = "",
-    var price: BigDecimal = BigDecimal(0)
+    var category: String = "",
+    var amount: Int = 0
 )

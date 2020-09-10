@@ -62,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
+
                     android:layout_marginRight="20dp"
                     android:background="@drawable/button_background"
                     android:onClick="stdButton"
@@ -84,7 +84,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
                     android:layout_marginRight="20dp"
                     android:layout_toEndOf="@+id/center_view"
                     android:background="@drawable/button_background"
@@ -97,9 +96,6 @@
                     android:id="@+id/beat_pfree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/pfreeButton"
-                    android:layout_alignBottom="@+id/pfreeButton"
-                    android:layout_alignParentEnd="true"
                     android:layout_marginRight="15dp"
                     android:gravity="center"
                     android:text="× 0"
@@ -145,7 +141,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/button_background"
                     android:onClick="popn100Button"
@@ -166,7 +161,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
                     android:layout_marginRight="20dp"
                     android:layout_toEndOf="@+id/center_view"
                     android:background="@drawable/button_background"
@@ -219,7 +213,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/button_background"
                 android:gravity="center"
@@ -364,7 +357,7 @@
         android:textColor="@color/textColor" />
 
     <EditText
-        android:id="@+id/editCategory"
+        android:id="@+id/categoryEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/editTextBackground"
@@ -381,7 +374,7 @@
         android:textColor="@color/textColor" />
 
     <EditText
-        android:id="@+id/editAmount"
+        android:id="@+id/amountEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/editTextBackground"
@@ -422,7 +415,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/saveButton"
+            android:id="@+id/insertButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
