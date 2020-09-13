@@ -1,6 +1,7 @@
 package com.example.testtwitter4j.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -15,11 +16,9 @@ import com.example.testtwitter4j.utility.ErrorUtility
 import com.google.firebase.FirebaseApp
 //import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ktx.database
+import com.google.firebase.database.logging.DefaultLogger
 import com.google.firebase.ktx.Firebase
-import com.twitter.sdk.android.core.TwitterSession
-import com.twitter.sdk.android.core.Callback;
-import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.*
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.footer_layout.view.*
@@ -39,7 +38,20 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     var fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
     private val twitter: Twitter = TwitterFactory().instance
 
-    //private lateinit var mAuth: FirebaseAuth
+    /*
+    val config = TwitterConfig.Builder(this)
+        .logger(DefaultLogger(Log.DEBUG))
+        .twitterAuthConfig(
+            TwitterAuthConfig(
+                // 暫定ベタ書き（ここ適宜取得する処理作る必要あり）
+                "gAbSxVEZi0dcnFdfyPgCSm4k1", // CONSUMER_KEY,
+                "bcSoFJTDxmvKEV6lZw2ObIE5mFtWYVf6pdoOwt4ElOnViA1DQ3" // CONSUMER_SECRET
+            )
+        )
+        .debug(true)
+        .build()
+
+     */
 
     //Coroutinesを扱うための設定（詳細は後述）
     private val job = Job()
@@ -65,27 +77,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             // Firebaseの初期化
             FirebaseApp.initializeApp(this)
             //mAuth = FirebaseAuth.getInstance()
-            /** Twitterログインボタン */
-            /*
-            login_button.callback = object : Callback<TwitterSession>() {
-                override fun success(result: Result<TwitterSession>?) {
-                    Toast.makeText(this@MainActivity, "ログイン成功", Toast.LENGTH_SHORT).show()
-
-                    if (result != null){
-                        // TODO: ここで成功したあと処理のメソッドを呼ぶ
-                        //handleTwitterSession(result.data)
-                    }else{
-                        //TODO: ここもエラー処理もなんかする
-                    }
-                }
-
-                override fun failure(exception: TwitterException?) {
-                    Toast.makeText(this@MainActivity, "ログイン失敗", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-             */
-
 
         } catch (e:Exception) {
             ErrorUtility.reportException(this, e)

@@ -16,8 +16,14 @@ import com.example.testtwitter4j.R
 import com.example.testtwitter4j.utility.ImageUtility
 import com.example.testtwitter4j.context.TweetStatusContext
 import com.example.testtwitter4j.main.MainActivity
+import com.twitter.sdk.android.core.Callback
+import com.twitter.sdk.android.core.Result
+import com.twitter.sdk.android.core.TwitterException
+import com.twitter.sdk.android.core.TwitterSession
 import kotlinx.android.synthetic.main.fragment_tweet.*
 import kotlinx.android.synthetic.main.fragment_tweet.view.*
+import kotlinx.android.synthetic.main.header_layout.*
+import kotlinx.android.synthetic.main.header_layout.view.*
 import kotlinx.coroutines.*
 import twitter4j.StatusUpdate
 import twitter4j.Twitter
@@ -69,6 +75,28 @@ class TweetFragment : Fragment() , CoroutineScope {
         // fragmentの場合、onCreateView内で下記のようにviewを設定し、view.[id].setOnClickListener{}の形でクリックハンドラを書く
         val view = inflater.inflate(R.layout.fragment_tweet, container, false)
 
+
+        /** TODO: Twitterログインボタン */
+        /**
+        view.header.login_button.callback = object : Callback<TwitterSession>() {
+
+            override fun success(result: Result<TwitterSession>?) {
+                println("成功です")
+
+                if (result != null){
+                    //ここで成功したあと処理のメソッドを呼ぶ
+                    Toast.makeText(MainActivity(), "成功です", Toast.LENGTH_SHORT).show()
+                }else{
+
+                    //ここもエラー処理もなんかする
+                }
+            }
+
+            override fun failure(exception: TwitterException?) {
+                Toast.makeText(MainActivity(), "失敗です", Toast.LENGTH_SHORT).show()
+            }
+        }
+        */
 
         // 画像1-4のBitmapを初期化
         TweetStatusContext().initializeBitmaps()

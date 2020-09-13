@@ -10,12 +10,15 @@ import com.example.testtwitter4j.R
 import com.example.testtwitter4j.bean.OutlayBean
 import com.example.testtwitter4j.main.MainActivity
 import com.example.testtwitter4j.utility.ErrorUtility
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+import com.example.testtwitter4j.utility.FirebaseUtility
+import io.reactivex.Completable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_outlay_input.*
 import kotlinx.android.synthetic.main.fragment_outlay_input.view.*
 import java.lang.Exception
-import java.math.BigDecimal
+import java.util.*
+// import io.reactivex.Completable
+// import io.reactivex.schedulers.Schedulers
 
 class OutlayInputFragment : Fragment() {
     // TODO: Rename and change types of parameters
@@ -34,6 +37,11 @@ class OutlayInputFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_outlay_input, container, false)
 
+        view.resetButton.setOnClickListener {
+            onClickResetButton()
+        }
+
+        // 「追加」ボタン押下ハンドラ
         view.insertButton.setOnClickListener {
             onClickInsertButton()
         }
@@ -41,19 +49,30 @@ class OutlayInputFragment : Fragment() {
         return view
     }
 
+    private fun onClickResetButton () {
+        lateinit var outlayBeanList: List<OutlayBean>
+        try {
+            outlayBeanList = FirebaseUtility().getRecord()
+
+            Toast.makeText(activity, "outlayBeanList:${outlayBeanList}", Toast.LENGTH_LONG).show()
+
+        } catch (e: Exception) {
+            ErrorUtility.reportException(context!!, e)
+        }
+    }
+
     /** 「追加」ボタン */
     private fun onClickInsertButton () {
         try {
-            val outlayBean = OutlayBean()
-            outlayBean.category = categoryEdit.text.toString()
-            outlayBean.amount = amountEdit.text.toString().toInt()
+            val outlayBean = OutlayBean(
+                "HANEKW_", // TODO: TwitterID(@無し) 取得処理（今はとりまベタ書き）
+                Date(), // 追加日時(現在の時刻)
+                categoryEdit.text.toString(), // 項目名
+                amountEdit.text.toString().toInt() // 値段
+            )
 
-            // Write a message to the database
-            val database = Firebase.database
-            val myRef = database.getReference("server/saving-data/test-twitter4j").child("outlays")
-            val pushMyRef = myRef.push()
-            pushMyRef.setValue(outlayBean)
-
+            // データ挿入処理
+            FirebaseUtility().insertOutlayBean(outlayBean)
             Toast.makeText(activity, "outlayBean:$outlayBean", Toast.LENGTH_LONG).show()
 
             val mainActivity = activity as MainActivity
