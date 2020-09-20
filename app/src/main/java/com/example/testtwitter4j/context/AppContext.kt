@@ -3,7 +3,9 @@ package com.example.testtwitter4j.context
 import android.app.Activity
 import android.content.Intent
 import android.util.Log
+import com.example.testtwitter4j.bean.OutlayBean
 import java.util.*
+import kotlin.collections.ArrayList
 
 class AppContext {
     // シングルトン
@@ -16,6 +18,10 @@ class AppContext {
     // メンバ変数
     // 画面スタック
     private var activityStack: Stack<Class<*>> = Stack<Class<*>>()
+    // 最新の出費情報ArrayList（1ユーザーぶん）
+    private var outlayBeanList = ArrayList<OutlayBean>()
+
+
 
     // 起動時のActivityを設定する
     fun setTopActivity(clazz: Class<*>) {
@@ -70,5 +76,14 @@ class AppContext {
             }
         }
         throw Exception("goToActivity()で遷移先画面が見つかりませんでした。")
+    }
+
+
+    /** outlayBenList */
+    fun getOutlayBeanList (): ArrayList<OutlayBean> {
+        return outlayBeanList
+    }
+    fun setOutlayBeanList (outlayBeanList: ArrayList<OutlayBean>) {
+        this.outlayBeanList = outlayBeanList
     }
 }

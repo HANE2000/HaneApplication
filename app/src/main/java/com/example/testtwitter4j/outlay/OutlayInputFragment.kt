@@ -11,6 +11,11 @@ import com.example.testtwitter4j.bean.OutlayBean
 import com.example.testtwitter4j.main.MainActivity
 import com.example.testtwitter4j.utility.ErrorUtility
 import com.example.testtwitter4j.utility.FirebaseUtility
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_outlay_input.*
@@ -45,7 +50,6 @@ class OutlayInputFragment : Fragment() {
         view.insertButton.setOnClickListener {
             onClickInsertButton()
         }
-
         return view
     }
 
@@ -68,7 +72,7 @@ class OutlayInputFragment : Fragment() {
                 "HANEKW_", // TODO: TwitterID(@無し) 取得処理（今はとりまベタ書き）
                 Date(), // 追加日時(現在の時刻)
                 categoryEdit.text.toString(), // 項目名
-                amountEdit.text.toString().toInt() // 値段
+                amountEdit.text.toString().toLong() // 値段
             )
 
             // データ挿入処理
