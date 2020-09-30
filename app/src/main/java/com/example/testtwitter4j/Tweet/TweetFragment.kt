@@ -10,9 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.testtwitter4j.R
+import com.example.testtwitter4j.context.AppContext
 import com.example.testtwitter4j.utility.ImageUtility
 import com.example.testtwitter4j.context.TweetStatusContext
 import com.example.testtwitter4j.main.MainActivity
@@ -20,8 +22,11 @@ import com.twitter.sdk.android.core.Callback
 import com.twitter.sdk.android.core.Result
 import com.twitter.sdk.android.core.TwitterException
 import com.twitter.sdk.android.core.TwitterSession
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.footer_layout.view.*
 import kotlinx.android.synthetic.main.fragment_tweet.*
 import kotlinx.android.synthetic.main.fragment_tweet.view.*
+import kotlinx.android.synthetic.main.fragment_tweet_completed.*
 import kotlinx.android.synthetic.main.header_layout.*
 import kotlinx.android.synthetic.main.header_layout.view.*
 import kotlinx.coroutines.*
@@ -43,7 +48,6 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class TweetFragment : Fragment() , CoroutineScope {
-
     private val twitter: Twitter = TwitterFactory().instance
 
     //Coroutinesを扱うための設定（詳細は後述）
@@ -98,6 +102,19 @@ class TweetFragment : Fragment() , CoroutineScope {
         }
         */
 
+        // ログインユーザー表示
+        view.login_user_text.text =
+            if(AppContext.userId.isNotEmpty()) {
+                "Log-in user:\n@${AppContext.userId}"
+            } else "ログインして"
+
+        // 画像1-4にaddアイコン挿入
+        // TODO: addアイコンが荒いままだわ SVGどうにかして挿入できないかなあ
+        view.upload_img_1.setImageResource(R.drawable.baseline_add_white_18dp)
+        view.upload_img_2.setImageResource(R.drawable.baseline_add_white_18dp)
+        view.upload_img_3.setImageResource(R.drawable.baseline_add_white_18dp)
+        view.upload_img_4.setImageResource(R.drawable.baseline_add_white_18dp)
+
         // 画像1-4のBitmapを初期化
         TweetStatusContext().initializeBitmaps()
 
@@ -115,6 +132,9 @@ class TweetFragment : Fragment() , CoroutineScope {
             onClickUploadImg4()
         }
 
+        view.hashtag_manage_button.setOnClickListener {
+            onClickHashtagManageButton()
+        }
 
         view.tweet_button.setOnClickListener { //ID:buttonのボタンをクリックした際の処理
             onClickTweetButton()
@@ -276,6 +296,13 @@ class TweetFragment : Fragment() , CoroutineScope {
             READ_REQUEST_CODE
         )
 
+    }
+
+
+    /**  */
+    private fun onClickHashtagManageButton() {
+        val mainActivity = activity as MainActivity
+        mainActivity.replaceFragment(HashtagManageFragment())
     }
 
     companion object {

@@ -5,7 +5,7 @@ import java.util.*
 
 data class OutlayBean (
     var userId: String = "", // TwitterのID（@ 以降の）
-    var addedDate: Date = Date(),
-    var category: String = "",
-    var amount: Long = 0
+    var addedDate: Date = Date(), // 登録日時
+    var category: String = "", // 項目名
+    var amount: Long = 0 // 額
 )

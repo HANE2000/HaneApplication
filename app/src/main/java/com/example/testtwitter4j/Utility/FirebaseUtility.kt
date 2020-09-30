@@ -8,7 +8,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
 import kotlin.collections.ArrayList
@@ -37,7 +36,7 @@ class FirebaseUtility {
         var outlayBeanList = ArrayList<OutlayBean>()
 
         // Attach a listener to read the data at our posts reference
-        val myRef = db.getReference("server/test-twitter4j/outlays/HANEKW_")
+        val myRef = db.getReference("server/test-twitter4j/outlays/${AppContext.userId}")
 
         // データを取得するお決まりのやつ（リスナーを用意して二つのメソッドをオーバーライド）
         myRef.addValueEventListener(object : ValueEventListener {

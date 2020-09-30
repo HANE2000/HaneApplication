@@ -36,4 +36,6 @@
     <color name="buttonTextColor">#FFFFFF</color>
     <color name="labelTextColor">#FFFFFF</color>
 
+    <color name="tweetButtonBackground">#00ACEE</color>
+
 </resources>

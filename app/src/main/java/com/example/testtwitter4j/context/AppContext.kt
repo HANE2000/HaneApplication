@@ -14,6 +14,8 @@ class AppContext {
         fun getInstance(): AppContext {
             return instance
         }
+
+        var userId = "HANEKW_"
     }
     // メンバ変数
     // 画面スタック
