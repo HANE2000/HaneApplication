@@ -12,6 +12,11 @@ import com.example.testtwitter4j.context.AppContext
 import com.example.testtwitter4j.main.MainActivity
 import com.example.testtwitter4j.utility.ErrorUtility
 import com.example.testtwitter4j.utility.FirebaseUtility
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_outlay_input.*
 import kotlinx.android.synthetic.main.fragment_outlay_input.view.*
 import java.lang.Exception
@@ -26,6 +31,24 @@ class OutlayInputFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        /*
+        val db = Firebase.database
+        // Attach a listener to read the data at our posts reference
+        val myRef = db.getReference("server/test-twitter4j/outlays/${AppContext.userId}")
+        // データを取得するお決まりのやつ（リスナーを用意して二つのメソッドをオーバーライド）
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                Toast.makeText(activity, "受信したよ", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // ...
+                Toast.makeText(MainActivity(), "しっぱい", Toast.LENGTH_LONG).show()
+            }
+        })
+
+         */
 
     }
 
@@ -44,6 +67,7 @@ class OutlayInputFragment : Fragment() {
         view.insertButton.setOnClickListener {
             onClickInsertButton()
         }
+
         return view
     }
 
@@ -79,6 +103,7 @@ class OutlayInputFragment : Fragment() {
             ErrorUtility.reportException(context!!, e)
         }
     }
+
 
     companion object {
 
