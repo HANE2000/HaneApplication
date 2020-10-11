@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.util.Log
 import com.example.testtwitter4j.bean.OutlayBean
+import com.example.testtwitter4j.bean.TemplateBean
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -22,6 +23,9 @@ class AppContext {
     private var activityStack: Stack<Class<*>> = Stack<Class<*>>()
     // 最新の出費情報ArrayList（1ユーザーぶん）
     private var outlayBeanList = ArrayList<OutlayBean>()
+
+    // 最新のテンプレ情報ArrayList（1ユーザーぶん）
+    private var templateBeanList = ArrayList<TemplateBean>()
 
 
 
@@ -88,4 +92,13 @@ class AppContext {
     fun setOutlayBeanList (outlayBeanList: ArrayList<OutlayBean>) {
         this.outlayBeanList = outlayBeanList
     }
+
+    /** templateBenList */
+    fun getTemplateBeanList (): ArrayList<TemplateBean> {
+        return templateBeanList
+    }
+    fun setTemplateBeanList (templateBeanList: ArrayList<TemplateBean>) {
+        this.templateBeanList = templateBeanList
+    }
+
 }

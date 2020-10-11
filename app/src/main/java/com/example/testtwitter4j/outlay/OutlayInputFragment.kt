@@ -12,11 +12,6 @@ import com.example.testtwitter4j.context.AppContext
 import com.example.testtwitter4j.main.MainActivity
 import com.example.testtwitter4j.utility.ErrorUtility
 import com.example.testtwitter4j.utility.FirebaseUtility
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_outlay_input.*
 import kotlinx.android.synthetic.main.fragment_outlay_input.view.*
 import java.lang.Exception
@@ -74,7 +69,7 @@ class OutlayInputFragment : Fragment() {
     private fun onClickResetButton () {
         lateinit var outlayBeanList: List<OutlayBean>
         try {
-            outlayBeanList = FirebaseUtility().getRecord()
+            outlayBeanList = FirebaseUtility().getOutlayRecord()
 
             Toast.makeText(activity, "outlayBeanList:${outlayBeanList}", Toast.LENGTH_LONG).show()
 
