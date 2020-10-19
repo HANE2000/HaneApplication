@@ -1,7 +1,8 @@
 package com.example.testtwitter4j.main
 
+//import com.google.firebase.auth.FirebaseAuth
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -14,21 +15,21 @@ import com.example.testtwitter4j.outlay.OutlayInputFragment
 import com.example.testtwitter4j.tweet.TweetFragment
 import com.example.testtwitter4j.utility.ErrorUtility
 import com.google.firebase.FirebaseApp
-//import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.logging.DefaultLogger
 import com.google.firebase.ktx.Firebase
-import com.twitter.sdk.android.core.*
-import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.footer_layout.view.*
-import kotlinx.android.synthetic.main.header_layout.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import twitter4j.Twitter
 import twitter4j.TwitterFactory
 import kotlin.coroutines.CoroutineContext
+
+import android.content.ClipData
+import android.content.ClipboardManager
+import androidx.core.content.ContextCompat
+import com.example.testtwitter4j.context.AppContext
 
 
 //プロパティファイルを使う場合
@@ -78,7 +79,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             FirebaseApp.initializeApp(this)
             //mAuth = FirebaseAuth.getInstance()
 
-        } catch (e:Exception) {
+            // Get the clipboard system service
+            AppContext.clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+
+        } catch (e: Exception) {
             ErrorUtility.reportException(this, e)
         }
     }
@@ -104,7 +108,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 val database = Firebase.database
                 val myRef = database.getReference("message")
                 myRef.setValue("Hello, World!")
-                Toast.makeText(this, "Firebase.database.getReference(message)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Firebase.database.getReference(message)", Toast.LENGTH_SHORT)
+                    .show()
                 true
             }
             R.id.menu_item03 -> {
@@ -127,6 +132,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             fragment
         ) // ここFragmentのインスタンスはsupport.v4のものであること！！
         fragmentTransaction.commit()
+    }
+
+
+    fun getAppContext(): Context? {
+        return this
     }
 
 }

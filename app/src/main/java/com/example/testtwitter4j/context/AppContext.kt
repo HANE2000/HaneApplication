@@ -1,6 +1,7 @@
 package com.example.testtwitter4j.context
 
 import android.app.Activity
+import android.content.ClipboardManager
 import android.content.Intent
 import android.util.Log
 import com.example.testtwitter4j.bean.OutlayBean
@@ -17,6 +18,9 @@ class AppContext {
         }
 
         var userId = "HANEKW_"
+
+        // Get the clipboard system service
+        lateinit var clipboard: ClipboardManager
     }
     // メンバ変数
     // 画面スタック
@@ -26,6 +30,8 @@ class AppContext {
 
     // 最新のテンプレ情報ArrayList（1ユーザーぶん）
     private var templateBeanList = ArrayList<TemplateBean>()
+    // 直近で選択したテンプレリストのposition
+    private var recentSelectedTemplatePosition = -1
 
 
 
@@ -99,6 +105,15 @@ class AppContext {
     }
     fun setTemplateBeanList (templateBeanList: ArrayList<TemplateBean>) {
         this.templateBeanList = templateBeanList
+    }
+
+    /** recentSelectedTemplatePosition */
+    fun getRecentSelectedTemplatePosition (): Int {
+        return recentSelectedTemplatePosition
+    }
+
+    fun setRecentSelectedTemplatePosition (recentSelectedTemplatePosition: Int) {
+        this.recentSelectedTemplatePosition = recentSelectedTemplatePosition
     }
 
 }
