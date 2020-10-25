@@ -66,7 +66,7 @@ class TweetCompletedFragment : Fragment() {
 
             view.base_completed_layout.button.setOnClickListener {
                 //AppContext.getInstance().startActivity(this, MainActivity::class.java)
-                (activity as MainActivity).replaceFragment(TweetFragment())
+                (activity as MainActivity).replaceFragment(R.id.fragment_container, TweetFragment())
             }
 
             // 2020/07/23

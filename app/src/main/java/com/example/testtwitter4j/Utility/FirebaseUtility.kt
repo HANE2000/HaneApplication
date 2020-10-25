@@ -32,6 +32,15 @@ class FirebaseUtility {
         pushMyRef.setValue(outlayBean)
     }
 
+    /** テンプレートデータを追加 */
+    fun insertTemplateBean(templateBean: TemplateBean) {
+        // Write a message to the database
+        val myRef = db.getReference("server/test-twitter4j/templates")
+            .child("${templateBean.userId}")
+        // outlays/[userId]直下にデータを追加
+        val pushMyRef = myRef.push()
+        pushMyRef.setValue(templateBean)
+    }
 
     // ~/outlays/[ユーザーID] を取得（Firebase）
     fun getOutlayRecord (): List<OutlayBean> {
@@ -68,8 +77,8 @@ class FirebaseUtility {
         var templateBeanList = ArrayList<TemplateBean>()
 
         // Attach a listener to read the data at our posts reference
-        val myRef = db.getReference("server/test-twitter4j/outlays/template")
-        // server/test-twitter4j/template/${AppContext.userId} がホントは正しいパスだけど、間違えてテストデータ登録しちゃった
+        val myRef = db.getReference("server/test-twitter4j/templates/${AppContext.userId}")
+        // server/test-twitter4j/templates/${AppContext.userId} がホントは正しいパスだけど、間違えてテストデータ登録しちゃった
 
         // データを取得するお決まりのやつ（リスナーを用意して二つのメソッドをオーバーライド）
         myRef.addValueEventListener(object : ValueEventListener {
@@ -112,9 +121,10 @@ class FirebaseUtility {
     fun convertMapToTemplateBean (map: Map<String, Any>): TemplateBean {
         val ret = TemplateBean()
 
-        ret.index = map["template_index"] as Long
-        ret.name = map["template_name"] as String
-        ret.value = map["template_value"] as String
+        ret.index = map["index"] as Long
+        ret.name = map["name"] as String
+        ret.userId = map["userId"] as String
+        ret.value = map["value"] as String
 
         return ret
     }

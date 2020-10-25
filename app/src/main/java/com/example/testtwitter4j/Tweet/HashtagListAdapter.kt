@@ -42,7 +42,7 @@ class HashtagListAdapter(
 
     //Viewのコンテンツを置き換える（LayoutManagerによって呼び出される）
     override fun onBindViewHolder(holder: HashtagListViewHolder, position: Int) {
-        holder.itemView.temlate_index_view.text = position.toString()
+        holder.itemView.template_index_view.text = position.toString()
         holder.itemView.template_name_text.text = templateBeanList[position].name
         holder.itemView.template_value_hidden.text = templateBeanList[position].value
         holder.itemView.template_item.setOnClickListener {

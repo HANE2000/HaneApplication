@@ -3,6 +3,7 @@
     android:id="@+id/template_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="15dp"
     android:background="@drawable/list_frame">
 
     <LinearLayout
@@ -11,7 +12,7 @@
         android:weightSum="9">
 
         <TextView
-            android:id="@+id/temlate_index_view"
+            android:id="@+id/template_index_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

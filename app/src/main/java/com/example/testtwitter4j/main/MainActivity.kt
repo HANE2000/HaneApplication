@@ -68,11 +68,23 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             fragmentTransaction = fragmentManager.beginTransaction()
 
             footer.button_1.setOnClickListener {
-                replaceFragment(TweetFragment())
+                replaceFragment(R.id.fragment_container, TweetFragment())
             }
 
             footer.button_2.setOnClickListener {
-                replaceFragment(OutlayInputFragment())
+                replaceFragment(R.id.fragment_container, OutlayInputFragment())
+            }
+
+            footer.button_3.setOnClickListener {
+                Toast.makeText(this,
+                    "TODO: なにか別の機能を実装予定（なにつくろう）",
+                    Toast.LENGTH_SHORT).show()
+            }
+
+            footer.button_4.setOnClickListener {
+                Toast.makeText(this,
+                    "TODO: なにか別の機能を実装予定（なにつくろう）",
+                    Toast.LENGTH_SHORT).show()
             }
 
             // Firebaseの初期化
@@ -123,12 +135,12 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
     // LinearLayoutのコンテナをfragment指定 + replaceする
     // 引数は 「new Fragmentを継承しているクラスのインスタンス()」
-    fun replaceFragment(fragment: Fragment) {
+    fun replaceFragment(layout: Int, fragment: Fragment) {
         // 2020/07/16 以下で落ちる
         // kotlin.UninitializedPropertyAccessException: lateinit property fragmentManager has not been initialized
         fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(
-            R.id.fragment_container,
+            layout,
             fragment
         ) // ここFragmentのインスタンスはsupport.v4のものであること！！
         fragmentTransaction.commit()

@@ -53,7 +53,7 @@ class HashtagListFragment : Fragment() {
                     Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(context,
-                    "templateBeanList:\n$templateBeanList",
+                    "リストのデータを最新化した（${templateBeanList.size}件）",
                     Toast.LENGTH_SHORT).show()
             }
 

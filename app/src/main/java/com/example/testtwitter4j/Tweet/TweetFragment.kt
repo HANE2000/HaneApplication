@@ -108,13 +108,6 @@ class TweetFragment : Fragment() , CoroutineScope {
                 "Log-in user:\n@${AppContext.userId}"
             } else "ログインして"
 
-        // 画像1-4にaddアイコン挿入
-        // TODO: addアイコンが荒いままだわ SVGどうにかして挿入できないかなあ
-        view.upload_img_1.setImageResource(R.drawable.baseline_add_white_18dp)
-        view.upload_img_2.setImageResource(R.drawable.baseline_add_white_18dp)
-        view.upload_img_3.setImageResource(R.drawable.baseline_add_white_18dp)
-        view.upload_img_4.setImageResource(R.drawable.baseline_add_white_18dp)
-
         // 画像1-4のBitmapを初期化
         TweetStatusContext().initializeBitmaps()
 
@@ -279,7 +272,7 @@ class TweetFragment : Fragment() , CoroutineScope {
                 // 以下のように、親Activityを取得して そこからメソッド呼ばないと、
                 // IllegalStateException: Activity has been destroyed で落ちる（元のActivityの実体が不明なため）
                 val mainActivity = activity as MainActivity
-                mainActivity.replaceFragment(TweetCompletedFragment())
+                mainActivity.replaceFragment(R.id.fragment_container, TweetCompletedFragment())
             }
         } catch (e: Exception) {
 
@@ -302,7 +295,7 @@ class TweetFragment : Fragment() , CoroutineScope {
     /**  */
     private fun onClickHashtagManageButton() {
         val mainActivity = activity as MainActivity
-        mainActivity.replaceFragment(HashtagManageFragment())
+        mainActivity.replaceFragment(R.id.fragment_container, HashtagManageFragment())
     }
 
     companion object {

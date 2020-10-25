@@ -37,32 +37,36 @@
             android:id="@+id/upload_img_1"
             android:layout_width="0dp"
             android:layout_height="100dp"
-            android:layout_margin="5dp"
+            android:layout_margin="3dp"
             android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_gallery"
             android:background="@drawable/border" />
 
         <ImageView
             android:id="@+id/upload_img_2"
             android:layout_width="0dp"
             android:layout_height="100dp"
-            android:layout_margin="5dp"
+            android:layout_margin="3dp"
             android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_gallery"
             android:background="@drawable/border" />
 
         <ImageView
             android:id="@+id/upload_img_3"
             android:layout_width="0dp"
             android:layout_height="100dp"
-            android:layout_margin="5dp"
+            android:layout_margin="3dp"
             android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_gallery"
             android:background="@drawable/border" />
 
         <ImageView
             android:id="@+id/upload_img_4"
             android:layout_width="0dp"
             android:layout_height="100dp"
-            android:layout_margin="5dp"
+            android:layout_margin="3dp"
             android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_gallery"
             android:background="@drawable/border" />
 
     </LinearLayout>
@@ -82,7 +86,7 @@
         android:id="@+id/message_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="Ready."
         android:textColor="@color/textColor"
         android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"

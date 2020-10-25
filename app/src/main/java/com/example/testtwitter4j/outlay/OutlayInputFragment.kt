@@ -93,7 +93,7 @@ class OutlayInputFragment : Fragment() {
             Toast.makeText(activity, "outlayBean:$outlayBean", Toast.LENGTH_LONG).show()
 
             val mainActivity = activity as MainActivity
-            mainActivity.replaceFragment(OutlayInputFragment())
+            mainActivity.replaceFragment(R.id.fragment_container, OutlayInputFragment())
         } catch (e:Exception) {
             ErrorUtility.reportException(context!!, e)
         }
