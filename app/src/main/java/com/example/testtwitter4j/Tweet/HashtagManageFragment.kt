@@ -11,8 +11,10 @@ import com.example.testtwitter4j.R
 import com.example.testtwitter4j.bean.TemplateBean
 import com.example.testtwitter4j.context.AppContext
 import com.example.testtwitter4j.utility.ErrorUtility
+import kotlinx.android.synthetic.main.base_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_hashtag_manage.*
 import kotlinx.android.synthetic.main.fragment_hashtag_manage.view.*
+import kotlinx.android.synthetic.main.header_layout.view.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -29,6 +31,12 @@ class HashtagManageFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_hashtag_manage, container, false)
 
         try {
+            // ログインユーザー表示
+            view.login_user_text.text =
+                if(AppContext.userId.isNotEmpty()) {
+                    "Log-in user:\n@${AppContext.userId}"
+                } else "ログインして"
+
             // 「ADD」ボタン　の押下時リスナー
             view.template_add_button.setOnClickListener {
              addNewTemplate()
@@ -51,6 +59,10 @@ class HashtagManageFragment : Fragment() {
                 showTemplateList()
             }
 
+            view.data_edit_dialog.close_dialog_button.setOnClickListener {
+                closeDialog()
+            }
+
         } catch (e: Exception) {
             ErrorUtility.reportException(context!!, e)
         }
@@ -62,12 +74,15 @@ class HashtagManageFragment : Fragment() {
 
     }
 
-    /**  */
+    /** TODO: テンプレの新規データを作成・挿入 */
     private fun addNewTemplate() {
+
+        view!!.data_edit_dialog.visibility = View.VISIBLE
+
         Toast.makeText(context,
             "TODO: 新規レコードを追加する処理を実装予定（まだしてない）",
             Toast.LENGTH_SHORT).show()
-        /* TODO: 新規レコードを追加する処理実装
+        /*
         val templateBean = TemplateBean(
             AppContext.userId,
             -1,
@@ -120,14 +135,18 @@ class HashtagManageFragment : Fragment() {
             Toast.LENGTH_SHORT).show()
     }
 
-    /**  */
+    /** TODO: 選択中のテンプレを編集する */
     private fun editSelectedTemplate() {
-
+        Toast.makeText(context,
+            "TODO: 選択中のテンプレを編集する処理を実装予定（まだしてない）",
+            Toast.LENGTH_SHORT).show()
     }
 
-    /**  */
+    /** TODO: 選択中のテンプレを削除する */
     private fun deleteSelectedTemplate() {
-
+        Toast.makeText(context,
+            "TODO: 選択中のテンプレを削除する処理を実装予定（まだしてない）",
+            Toast.LENGTH_SHORT).show()
     }
 
 
@@ -135,8 +154,15 @@ class HashtagManageFragment : Fragment() {
     private fun showTemplateList(): View? {
         // ※ ここadd()したらリストがどんどん重なって描画されたので、replace()使う
         // ※ MainActivityからreplaceFragment()呼んだら、Activityが既にdestroyedされてて落ちた
-        childFragmentManager.beginTransaction().replace(R.id.list_container, HashtagListFragment()).commit();
+        childFragmentManager.beginTransaction().replace(R.id.list_container, HashtagListFragment()).commit()
         return view
+    }
+
+    /** dialogを閉じる */
+    private fun closeDialog() {
+        view!!.data_edit_dialog.new_data_title_edit.setText("")
+        view!!.data_edit_dialog.new_data_detail_edit.setText("")
+        view!!.data_edit_dialog.visibility = View.INVISIBLE
     }
 
 

@@ -1,108 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/header"
-        layout="@layout/header_layout" />
-
-
-    <EditText
-        android:id="@+id/template_edit"
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
-        android:background="@color/editTextBackground"
-        android:gravity="start"
-        android:hint="EditText"
-        android:textColor="@color/textColor"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical">
 
-        android:textColorHint="@color/hintTextColor" />
+        <include
+            android:id="@+id/header"
+            layout="@layout/header_layout" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hashtag List"
-        android:textColor="@color/textColor"
-        android:textSize="24dp"
-        android:layout_margin="10dp"
-        android:gravity="center_vertical"/>
-        <ImageButton
-            android:id="@+id/template_add_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+        <EditText
+            android:id="@+id/template_edit"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:layout_marginLeft="10dp"
-            android:layout_gravity="center_vertical"
-            android:src="@android:drawable/ic_input_add"
-            android:background="@drawable/no_stroke_icon_button_background" />
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/editTextBackground"
+            android:gravity="start"
+            android:hint="EditText"
+            android:textColor="@color/textColor"
 
-        <ImageButton
-            android:id="@+id/get_template_list_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center_vertical"
-            android:src="@android:drawable/stat_notify_sync"
-            android:background="@drawable/no_stroke_icon_button_background"
-            android:textAllCaps="false"
-            android:textColor="@color/textColor" />
-    </LinearLayout>
+            android:textColorHint="@color/hintTextColor" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="5dp"
-        android:weightSum="5">
-
-        <FrameLayout
-            android:id="@+id/list_container"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:background="@drawable/list_frame" />
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:weightSum="3"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:text="Hashtag List"
+                android:textColor="@color/textColor"
+                android:textSize="24dp" />
 
             <ImageButton
-                android:id="@+id/template_copy_button"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:src="@android:drawable/ic_menu_set_as"
-                android:background="@drawable/icon_button_background" />
+                android:id="@+id/get_template_list_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/no_stroke_icon_button_background"
+                android:src="@android:drawable/stat_notify_sync"
+                android:textAllCaps="false"
+                android:textColor="@color/textColor" />
+
             <ImageButton
-                android:id="@+id/template_edit_button"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:src="@android:drawable/ic_menu_edit"
-                android:background="@drawable/icon_button_background" />
-            <ImageButton
-                android:id="@+id/template_delete_button"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:src="@android:drawable/ic_menu_delete"
-                android:background="@drawable/icon_button_background" />
+                android:id="@+id/template_add_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/no_stroke_icon_button_background"
+                android:src="@android:drawable/ic_input_add" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="5dp"
+            android:weightSum="5">
+
+            <FrameLayout
+                android:id="@+id/list_container"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:background="@drawable/list_frame" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="3">
+
+                <ImageButton
+                    android:id="@+id/template_copy_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/icon_button_background"
+                    android:src="@android:drawable/ic_menu_set_as" />
+
+                <ImageButton
+                    android:id="@+id/template_edit_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/icon_button_background"
+                    android:src="@android:drawable/ic_menu_edit" />
+
+                <ImageButton
+                    android:id="@+id/template_delete_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/icon_button_background"
+                    android:src="@android:drawable/ic_menu_delete" />
+
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <include
+            android:visibility="invisible"
+            android:id="@+id/data_edit_dialog"
+            layout="@layout/base_dialog" />
+    </LinearLayout>
+
+</FrameLayout>

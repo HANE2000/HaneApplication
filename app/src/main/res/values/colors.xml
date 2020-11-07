@@ -23,11 +23,14 @@
 
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="translucentBlack">#80FFFFFF</color>
 
 
 
     <color name="background">#2F3F2F</color>
     <color name="footerBackground">#003F00</color>
+
+    <color name="borderColor">#BFFFBF</color>
 
     <color name="editTextBackground">#007F00</color>
 
