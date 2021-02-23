@@ -1,21 +1,13 @@
 package com.example.testtwitter4j.tweet
 
-import android.app.Activity
-import android.app.Application
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testtwitter4j.R
 import com.example.testtwitter4j.bean.TemplateBean
 import com.example.testtwitter4j.context.AppContext
-import com.example.testtwitter4j.main.MainActivity
-import kotlinx.android.synthetic.main.fragment_hashtag_manage.view.*
 import kotlinx.android.synthetic.main.hashtag_list_item.view.*
 
 class HashtagListAdapter(
@@ -47,7 +39,7 @@ class HashtagListAdapter(
         holder.itemView.template_value_hidden.text = templateBeanList[position].value
         holder.itemView.template_item.setOnClickListener {
             // AppContextに、選択したレコードのpositionを格納しとく
-            AppContext.getInstance().setRecentSelectedTemplatePosition(position)
+            AppContext.getInstance().setRecentSelectedTemplateRecord(templateBeanList[position])
 
             holder.itemView.template_item.setBackgroundColor(R.drawable.run_button_background)
             for (i in 0..templateBeanList.size) {

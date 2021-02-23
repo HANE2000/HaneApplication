@@ -12,11 +12,14 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.testtwitter4j.R
 import com.example.testtwitter4j.context.AppContext
 import com.example.testtwitter4j.utility.ImageUtility
 import com.example.testtwitter4j.context.TweetStatusContext
+import com.example.testtwitter4j.databinding.ActivityMainBinding
+import com.example.testtwitter4j.databinding.FragmentTweetBinding
 import com.example.testtwitter4j.main.MainActivity
 import com.twitter.sdk.android.core.Callback
 import com.twitter.sdk.android.core.Result
@@ -36,17 +39,6 @@ import twitter4j.TwitterFactory
 import twitter4j.UploadedMedia
 import kotlin.coroutines.CoroutineContext
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [TweetFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class TweetFragment : Fragment() , CoroutineScope {
     private val twitter: Twitter = TwitterFactory().instance
 
@@ -55,6 +47,7 @@ class TweetFragment : Fragment() , CoroutineScope {
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
 
+    lateinit var binding: FragmentTweetBinding
     lateinit var contentResolver: ContentResolver
 
     // TODO: Rename and change types of parameters
@@ -64,11 +57,8 @@ class TweetFragment : Fragment() , CoroutineScope {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        contentResolver = activity!!.contentResolver
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        contentResolver = requireActivity().contentResolver
+
     }
 
     override fun onCreateView(
@@ -78,6 +68,7 @@ class TweetFragment : Fragment() , CoroutineScope {
         // Inflate the layout for this fragment
         // fragmentの場合、onCreateView内で下記のようにviewを設定し、view.[id].setOnClickListener{}の形でクリックハンドラを書く
         val view = inflater.inflate(R.layout.fragment_tweet, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tweet, container, false)
 
 
         /** TODO: Twitterログインボタン */
@@ -150,7 +141,7 @@ class TweetFragment : Fragment() , CoroutineScope {
                         val inputStream = contentResolver?.openInputStream(uri)
                         val image = BitmapFactory.decodeStream(inputStream)
                         //val imageView = findViewById<ImageView>(R.id.imageView)
-                        activity!!.findViewById<ImageView>(selectImageFrom).setImageBitmap(image)
+                        requireActivity().findViewById<ImageView>(selectImageFrom).setImageBitmap(image)
 
                         when (selectImageFrom) {
                             R.id.upload_img_1 -> {
@@ -175,7 +166,7 @@ class TweetFragment : Fragment() , CoroutineScope {
     }
 
     override fun onAttach(context: Context) {
-        super.onAttach(context!!)
+        super.onAttach(requireContext())
     }
 
     override fun onDetach() {
@@ -224,7 +215,7 @@ class TweetFragment : Fragment() , CoroutineScope {
 
                     // 添付画像1
                     if(TweetStatusContext.image1Bitmap != null) {
-                        val file = ImageUtility().bitmapToFile(TweetStatusContext.image1Bitmap!!, activity!!.applicationContext)
+                        val file = ImageUtility().bitmapToFile(TweetStatusContext.image1Bitmap!!, requireActivity().applicationContext)
                         val media: UploadedMedia = twitter.uploadMedia(file)
                         //mediaIds[0] = media.mediaId
                         mediaIds.add(media.mediaId)
@@ -232,7 +223,7 @@ class TweetFragment : Fragment() , CoroutineScope {
                     }
                     // 添付画像2
                     if(TweetStatusContext.image2Bitmap != null) {
-                        val file = ImageUtility().bitmapToFile(TweetStatusContext.image2Bitmap!!, activity!!.applicationContext)
+                        val file = ImageUtility().bitmapToFile(TweetStatusContext.image2Bitmap!!, requireActivity().applicationContext)
                         val media: UploadedMedia = twitter.uploadMedia(file)
                         //mediaIds[1] = media.mediaId
                         mediaIds.add(media.mediaId)
@@ -240,7 +231,7 @@ class TweetFragment : Fragment() , CoroutineScope {
                     }
                     // 添付画像3
                     if(TweetStatusContext.image3Bitmap != null) {
-                        val file = ImageUtility().bitmapToFile(TweetStatusContext.image3Bitmap!!, activity!!.applicationContext)
+                        val file = ImageUtility().bitmapToFile(TweetStatusContext.image3Bitmap!!, requireActivity().applicationContext)
                         val media: UploadedMedia = twitter.uploadMedia(file)
                         //mediaIds[2] = media.mediaId
                         mediaIds.add(media.mediaId)
@@ -248,7 +239,7 @@ class TweetFragment : Fragment() , CoroutineScope {
                     }
                     // 添付画像4
                     if(TweetStatusContext.image4Bitmap != null) {
-                        val file = ImageUtility().bitmapToFile(TweetStatusContext.image4Bitmap!!, activity!!.applicationContext)
+                        val file = ImageUtility().bitmapToFile(TweetStatusContext.image4Bitmap!!, requireActivity().applicationContext)
                         val media: UploadedMedia = twitter.uploadMedia(file)
                         //mediaIds[3] = media.mediaId
                         mediaIds.add(media.mediaId)

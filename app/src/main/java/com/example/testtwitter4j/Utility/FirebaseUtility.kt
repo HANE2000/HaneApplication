@@ -88,6 +88,8 @@ class FirebaseUtility {
                     val value = h.value as Map<String, Any>
                     // MapをBeanに変換
                     val templateBean = convertMapToTemplateBean(value)
+                    // push()時に付与されたユニークキーを取得する（UPDATEとかDELETEするときに使う）
+                    templateBean.uniqueKey = h.key!!
                     // 1レコードずつListに詰める
                     templateBeanList.add(templateBean)
                 }
@@ -127,5 +129,13 @@ class FirebaseUtility {
         ret.value = map["value"] as String
 
         return ret
+    }
+
+
+    /** TemplateBeanの新規レコード追加 */
+    fun addOrUpdateNewTemplateBean (name: String, value: String) {
+        val templateBean = TemplateBean("きまってない", AppContext.userId, -1, name, value)
+        // これbean情報をinsertするヤツ
+        insertTemplateBean(templateBean)
     }
 }

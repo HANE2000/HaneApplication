@@ -31,7 +31,7 @@ class AppContext {
     // 最新のテンプレ情報ArrayList（1ユーザーぶん）
     private var templateBeanList = ArrayList<TemplateBean>()
     // 直近で選択したテンプレリストのposition
-    private var recentSelectedTemplatePosition = -1
+    private var recentSelectedTemplateRecord = TemplateBean()
 
 
 
@@ -56,10 +56,7 @@ class AppContext {
             return
         }
         activityStack.pop() // 今いる画面を捨てる
-        var clazz = activityStack.peek() // back先
-        if (clazz == null) {
-            return
-        }
+        var clazz: Class<*>? = activityStack.peek() ?: return // back先
         currentActivity.startActivity(Intent(currentActivity, clazz))
         currentActivity.overridePendingTransition(0, 0)
         currentActivity.finish()
@@ -107,13 +104,13 @@ class AppContext {
         this.templateBeanList = templateBeanList
     }
 
-    /** recentSelectedTemplatePosition */
-    fun getRecentSelectedTemplatePosition (): Int {
-        return recentSelectedTemplatePosition
+    /** recentSelectedTemplateRecord */
+    fun getRecentSelectedTemplateRecord (): TemplateBean {
+        return recentSelectedTemplateRecord
     }
 
-    fun setRecentSelectedTemplatePosition (recentSelectedTemplatePosition: Int) {
-        this.recentSelectedTemplatePosition = recentSelectedTemplatePosition
+    fun setRecentSelectedTemplateRecord (recentSelectedTemplateRecord: TemplateBean) {
+        this.recentSelectedTemplateRecord = recentSelectedTemplateRecord
     }
 
 }
